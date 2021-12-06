@@ -6,6 +6,10 @@ script.src = "https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js";
 script.async = true;
 document.body.appendChild(script);
 
+marked.setOptions({
+  breaks: true,
+});
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -31,7 +35,7 @@ export default class App extends React.Component {
       markdown: initialText,
     };
   }
-
+  // My markdown previewer interprets carriage returns and renders them as <br> (line break) elements
   updateMarkdown(markdown) {
     this.setState({ markdown });
   }
@@ -54,6 +58,7 @@ export default class App extends React.Component {
                 className="textarea"
                 rows="25"
                 value={this.state.markdown}
+                // My markdown previewer interprets carriage returns and renders them as <br> (line break) elements
                 onChange={(e) => this.updateMarkdown(e.target.value)}
               />
             </div>
