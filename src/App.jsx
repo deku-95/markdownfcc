@@ -4,6 +4,7 @@ import "bulma/css/bulma.css";
 const script = document.createElement("script");
 script.src = "https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js";
 script.async = true;
+document.body.appendChild(script);
 
 export default class App extends React.Component {
   constructor(props) {
@@ -32,7 +33,6 @@ export default class App extends React.Component {
   }
 
   updateMarkdown(markdown) {
-    // if there is enter also show in the preview
     this.setState({ markdown });
   }
 
@@ -54,7 +54,6 @@ export default class App extends React.Component {
                 className="textarea"
                 rows="25"
                 value={this.state.markdown}
-                // on change get the literal textarea value
                 onChange={(e) => this.updateMarkdown(e.target.value)}
               />
             </div>
@@ -64,7 +63,6 @@ export default class App extends React.Component {
             <div
               className="content"
               id="preview"
-              // if there is a breakline in the textarea, also add it here
               dangerouslySetInnerHTML={{ __html: marked(this.state.markdown) }}
             />
           </div>
